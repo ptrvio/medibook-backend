@@ -3,6 +3,7 @@ package com.medibook.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,7 +34,7 @@ public class Room {
             joinColumns = @JoinColumn(name = "room_id"),
             inverseJoinColumns = @JoinColumn(name = "characteristic_id")
     )
-    private Set<Characteristic> characteristics;
+    private Set<Characteristic> characteristics = new HashSet<>();
 
     public Room() {
     }

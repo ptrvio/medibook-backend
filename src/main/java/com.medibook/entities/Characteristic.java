@@ -14,7 +14,6 @@ public class Characteristic {
     private String urlicon;
 
     @ManyToMany(mappedBy = "characteristics")
-    @JsonIgnore
     private Set<Room> rooms;
 
     public Characteristic() {
