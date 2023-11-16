@@ -19,7 +19,7 @@ public class CharacteristicController {
         this.characteristicService = characteristicService;
     }
 
-    @GetMapping("/listcharacteristics")
+    @GetMapping
     public ResponseEntity<?> getAllCharacteristics() {
         return new ResponseEntity<>(characteristicService.getAllCharacteristics(), HttpStatus.OK);
     }
@@ -33,7 +33,7 @@ public class CharacteristicController {
         return new ResponseEntity<>(characteristic, HttpStatus.OK);
     }
 
-    @GetMapping("/byname/{name}")
+    @GetMapping("/{name}")
     public ResponseEntity<Characteristic> getCharacteristicByName(@PathVariable String name) {
         Characteristic characteristic = characteristicService.getCharacteristicByName(name);
         if (characteristic == null) {

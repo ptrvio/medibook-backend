@@ -30,9 +30,9 @@ public class Room {
 
     @ManyToMany
     @JoinTable(
-            name = "room_characteristic",
-            joinColumns = @JoinColumn(name = "room_id"),
-            inverseJoinColumns = @JoinColumn(name = "characteristic_id")
+        name = "room_characteristic",
+        joinColumns = @JoinColumn(name = "room_id", nullable = true),
+        inverseJoinColumns = @JoinColumn(name = "characteristic_id", nullable = true)
     )
     private Set<Characteristic> characteristics = new HashSet<>();
 

@@ -25,12 +25,9 @@ public class RoomController {
 
     @PostMapping()
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> addRoomWithCharacteristic(@RequestBody Room room, @RequestParam String nameCharacteristic) {
+    public ResponseEntity<?> addRoomWithCharacteristic(@RequestBody Room room) {
         try {
-            System.out.println("Room received: " + room);  // Agregar log para la sala recibida
-            System.out.println("Characteristic name received: " + nameCharacteristic);  // Agregar log para el nombre de la característica recibida
-
-            roomService.addRoomWithCharacteristic(room, nameCharacteristic);
+            roomService.registerRoom(room);
             return ResponseEntity.ok("Sala agregada exitosamente con la característica.");
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al agregar la sala con la característica: " + ex.getMessage());
