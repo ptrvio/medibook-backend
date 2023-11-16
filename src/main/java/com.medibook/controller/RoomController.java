@@ -25,11 +25,13 @@ public class RoomController {
 
     @PostMapping()
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> addRoom(@RequestBody Room room) {
-
-        roomService.addRoom(room);
-
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<?> addRoomWithCharacteristic(@RequestBody Room room) {
+        try {
+            roomService.registerRoom(room);
+            return ResponseEntity.ok("Sala agregada exitosamente con la característica.");
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al agregar la sala con la característica: " + ex.getMessage());
+        }
     }
     @PutMapping()
     @PreAuthorize("hasRole('ADMIN')")
